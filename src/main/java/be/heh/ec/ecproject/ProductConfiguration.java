@@ -11,7 +11,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @EnableJpaRepositories
-@Profile("prod")
 public class ProductConfiguration {
 
     @Autowired
