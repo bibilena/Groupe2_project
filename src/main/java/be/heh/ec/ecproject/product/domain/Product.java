@@ -9,17 +9,17 @@ public class Product {
     @Getter
     private String productName;
     @Getter
-    private String productBrand;
-    @Getter
     private String description;
+    @Getter
+    private int price;
 
     public Product(){}
 
-    public Product(Long id, String productName, String productBrand, String description) {
+    public Product(Long id, String productName, String description, int price) {
         this.id = id;
         this.productName = productName;
-        this.productBrand = productBrand;
         this.description = description;
+        this.price = price;
     }
 
 }

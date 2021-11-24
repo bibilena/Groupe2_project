@@ -20,7 +20,6 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@RunWith(SpringRunner.class)
 public class ControllerTest {
 
     @LocalServerPort
@@ -32,7 +31,7 @@ public class ControllerTest {
     @Test
     void getAllProducts(){
         List<Product> products = new ArrayList<>();
-        products.add(new Product(4L, "Café", "Grain d'or", "café"));
+        products.add(new Product(4L, "Café", "Grain d'or", 10));
 
         Map<String, Object> jsonProducts = new LinkedHashMap<>();
         jsonProducts.put("products", products);

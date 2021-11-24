@@ -22,7 +22,7 @@ public class ProductPersistenceAdapter implements AllProductUseCase {
         Map<String,Object> mapProduct = new HashMap<>();
 
         for (ProductJpaEntity product: productJpaList) {
-            productList.add(new Product(product.getProductId(),product.getProductName(),product.getProductBrand(),product.getDescription()));
+            productList.add(new Product(product.getProductId(),product.getProductName(),product.getDescription(), product.getPrice()));
         }
 
         mapProduct.put("products",productList);

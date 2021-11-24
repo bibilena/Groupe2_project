@@ -11,16 +11,16 @@ public class ProductJpaEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "productid")
     private Long productId;
 
-    @Column(name = "productName")
+    @Column(name = "productname")
     private String productName;
-
-    @Column(name = "productBrand")
-    private String productBrand;
 
     @Column(name = "description")
     private String description;
+
+    @Column(name = "price")
+    private int price;
 
 }
