@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -34,6 +34,9 @@ public class PersistenceTest {
         map = productPersistenceAdapter.getAllProducts();
 
         list = (ArrayList<Product>)map.get("products");
+
+        assertEquals("Snack foods", list.get(0).getProductName());
+        assertEquals("XnM1ZV82yQ", list.get(1).getDescription());
 
     }
 
