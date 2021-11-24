@@ -1,9 +1,7 @@
 package be.heh.ec.ecproject.product.domain;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 public class Product {
 
     @Getter
@@ -14,6 +12,8 @@ public class Product {
     private String productBrand;
     @Getter
     private String description;
+
+    public Product(){}
 
     public Product(Long id, String productName, String productBrand, String description) {
         this.id = id;
