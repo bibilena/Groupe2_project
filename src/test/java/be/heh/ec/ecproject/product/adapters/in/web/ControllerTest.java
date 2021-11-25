@@ -8,6 +8,8 @@ import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.context.annotation.Profile;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +21,9 @@ import java.util.Map;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ActiveProfiles("dev")
 public class ControllerTest {
 
     @LocalServerPort
@@ -46,6 +50,27 @@ public class ControllerTest {
                 then().
                     statusCode(200).
                     body("products[0].productName", equalTo("Café"));
+    }
+
+    @Test
+    void getProductsByText(){
+        List<Product> products = new ArrayList<>();
+        products.add(new Product(4L, "Café", "Grain d'or", 10));
+        products.add(new Product(5L, "Eau", "Evian", 10));
+
+        Map<String, Object> jsonProducts = new LinkedHashMap<>();
+        jsonProducts.put("products", products);
+
+        Mockito.when(allProductsUseCase.getAllProducts()).thenReturn(jsonProducts);
+
+        baseURI ="http://localhost/api";
+        given().
+                port(port).
+                when().
+                get("/products?text=af").
+                then().
+                statusCode(200).
+                body("products[0].productName", equalTo("Seafood"));
     }
 
 }
